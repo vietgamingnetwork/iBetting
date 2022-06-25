@@ -2,6 +2,8 @@
 // variables
 // --------------------------------------------------------------------------------------------------------------------------
 var apiKey = '7cfc11953bf6bc3f1191b7640343c199'; var playing;
+var sports;
+var odds;
 // --------------------------------------------------------------------------------------------------------------------------
 // message
 // --------------------------------------------------------------------------------------------------------------------------
@@ -14,6 +16,8 @@ $(function() {
 		if(typeof(event.data.playing) != 'undefined') 
 		{
 			playing = jQuery.parseJSON(event.data.playing);
+			sports = playing.sports;
+			odds = playing.odds;
 			$('.betting .playing .toast-body').html('');
 			$.each(playing, function(index, value)
 			{

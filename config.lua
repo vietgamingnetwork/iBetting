@@ -9,6 +9,7 @@ Config.EsxSharedObject = 'esx:getSharedObject'
 Config.PaymentAccount = 'money' -- can be bank or money
 Config.MinimumBet = 1000
 Config.MaximumBet = 1000000
+Config.BetCommand = 'bet'
 Config.BetLocations = {
 	vector3(26.32, -1348.01, 29.5),
 }

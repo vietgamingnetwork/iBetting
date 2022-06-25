@@ -2,12 +2,17 @@
 -- variables
 -----------------------------------------------------------------------------------------------------------------
 local iBetting = {}
+local apiData = {sports={}, odds={}}
 local ESX, QBCore
 -----------------------------------------------------------------------------------------------------------------
 -- ESX, QBCore
 -----------------------------------------------------------------------------------------------------------------
 if Config.Framework == "ESX" then
     TriggerEvent(Config.EsxSharedObject, function(obj) ESX = obj end)
+	
+	ESX.RegisterServerCallback('iBetting:getApiData', function(source, cb)
+		cb(apiData)
+	end)
 elseif Config.Framework == "QBCore" then
     QBCore = exports['qb-core']:GetCoreObject()
 end
@@ -104,14 +109,28 @@ AddEventHandler('iBetting:bet', function(data)
 	end
 end)
 
-function performAPIRequest(URL)
-	PerformHttpRequest(URL, function(error, result, headers)
-		return result
+function loadDataToInternal()
+	apiData = {sports={}, odds={}}
+	PerformHttpRequest("https://api.the-odds-api.com/v4/sports/?apiKey="..Config.ApiKey, function(error, result, headers)
+		for k, sport in ipairs(json.decode(result)) do
+			if sport.active then
+				table.insert(apiData.sports, sport)
+				PerformHttpRequest("https://api.the-odds-api.com/v4/sports/"..sport.key.."/odds/?regions=eu&dateFormat=unix&oddsFormat=decimal&markets=h2h&apiKey="..Config.ApiKey, function(error, result2, headers)
+					if result2 then
+						for k, event in ipairs(json.decode(result2)) do
+							apiData.odds[sport.key] = event
+						end
+					end
+				end,'GET')
+			end
+		end
 	end,'GET')
 end
 
-function loadDataToInternal()
-	
+function startUp()
+	loadDataToInternal()
 end
 
-loadDataToInternal()
+CreateThread(function()
+	startUp()
+end)

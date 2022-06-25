@@ -17,18 +17,19 @@ RegisterNUICallback('callClient', function(data) event = tostring(data.event); d
 -----------------------------------------------------------------------------------------------------------------
 -- open
 -----------------------------------------------------------------------------------------------------------------
-Citizen.CreateThread(function()
-	while true do
-		-- press E then open manager tools 
-		-- put you more check at here, example user id, admin roles
-		if IsControlJustReleased(0, 51) then
-			TriggerServerEvent('iBetting:manager')
-		elseif IsControlJustReleased(0, 29) then
-			TriggerServerEvent('iBetting:playing')
+if Config.BetCommand then
+	RegisterCommand(Config.BetCommand, function(source, args, raw)
+		if Config.Framework == "ESX" then
+			ESX.TriggerServerCallback('iBetting:getApiData', function(apiData)
+				print(json.encode(apiData))
+				SendNUIMessage({playing = json.encode(apiData)})
+				SetNuiFocus(true, true)
+			end)
+		elseif Config.Framework == "QBCore" then
+			
 		end
-		Citizen.Wait(10)
-	end
-end)
+	end)
+end
 -----------------------------------------------------------------------------------------------------------------
 -- close
 -----------------------------------------------------------------------------------------------------------------
@@ -37,28 +38,11 @@ AddEventHandler('iBetting:close', function()
 	SetNuiFocus(false, false)
 end)
 -----------------------------------------------------------------------------------------------------------------
--- manager
------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent('iBetting:manager')
-AddEventHandler('iBetting:manager', function(data)
-	SendNUIMessage({manager = true})
-	SetNuiFocus(false, false)
-end)
------------------------------------------------------------------------------------------------------------------
 -- list
 -----------------------------------------------------------------------------------------------------------------
 RegisterNetEvent('iBetting:list')
 AddEventHandler('iBetting:list', function(data)
 	TriggerServerEvent('iBetting:list', data)
-end)
------------------------------------------------------------------------------------------------------------------
--- playing
------------------------------------------------------------------------------------------------------------------
-RegisterNetEvent('iBetting:playing')
-AddEventHandler('iBetting:playing', function(data)
-	local id = source
-	SendNUIMessage({playing = json.encode(data)})
-	SetNuiFocus(true, true)
 end)
 -----------------------------------------------------------------------------------------------------------------
 -- place bet
