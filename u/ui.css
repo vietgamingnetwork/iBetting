@@ -1,0 +1,25 @@
+/* global */
+html {font-size:0.85vw}
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+*:focus {outline: 0 !important;box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;}
+.btn-outline-info:hover {color: #ffffff;border-color: #0dcaf0;}
+.btn-info, .btn-info:hover {color: #ffffff;}
+
+/* betting */
+.betting .manager {width:65rem;}
+.betting .sports, .betting .odds {height:40rem;overflow-x:hidden;overflow-y:scroll;}
+.betting .sports::-webkit-scrollbar, .betting .odds::-webkit-scrollbar{width: 0.2rem;background:#000000;}
+.betting .sports::-webkit-scrollbar-thumb, .betting .odds::-webkit-scrollbar-thumb{width: 0.2rem;background:#ffcc66;}
+
+/* playing */
+.betting .playing {width:50rem;}
+.betting .playing .match .img{width:4.5rem;}
+.betting .playing .match .btn{width:3.5rem;}
