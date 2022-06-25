@@ -128,7 +128,10 @@ function loadDataToInternal()
 end
 
 function startUp()
-	loadDataToInternal()
+	while true do
+		loadDataToInternal()
+		Citizen.Wait(3600000)
+	end
 end
 
 CreateThread(function()
