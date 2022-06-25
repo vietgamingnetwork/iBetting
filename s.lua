@@ -62,23 +62,45 @@ AddEventHandler('iBetting:bet', function(data)
 	local currentTime = os.time(os.date("!*t"))
 	-- check the match exist and vaild time
 	if iBetting[keym] and currentTime < iBetting[keym].time then
-		local xPlayer = ESX.GetPlayerFromId(id)
-		-- check player money
-		if xPlayer.getMoney() < bet then
-			-- send error notify
-			TriggerClientEvent('esx:showNotification', id, 'Do not have enough money to bet', "error", 3000)
-		else
-			-- set player money
-			xPlayer.removeMoney(bet)
-			-- bet odd
-			local odd = 0
-			if bet == 0 then odd = iBetting[keym].odd0 elseif bet == 1 then odd = iBetting[keym].odd1 elseif bet == 2 then odd = iBetting[keym].odd2 end
-			-- insert bet to database
-			local betId = exports.oxmysql:insert_async('INSERT INTO bettingbets (keym, bet, odd, data) VALUES (?, ?, ?, ?) ', {
-				keym, bet, odd, json.encode(iBetting[keym])
-			})
-			-- send info notify
-			TriggerClientEvent('esx:showNotification', id, 'Beted successfully!', "info", 3000)
+		if Config.Framework == "ESX" then
+			local xPlayer = ESX.GetPlayerFromId(id)
+			-- check player money
+			if xPlayer.getAccount(Config.PaymentAccount).money < bet then
+				-- send error notify
+				TriggerClientEvent('esx:showNotification', id, 'Do not have enough money to bet', "error", 3000)
+			else
+				-- set player money
+				xPlayer.removeAccountMoney(Config.PaymentAccount, bet)
+				-- bet odd
+				local odd = 0
+				if bet == 0 then odd = iBetting[keym].odd0 elseif bet == 1 then odd = iBetting[keym].odd1 elseif bet == 2 then odd = iBetting[keym].odd2 end
+				-- insert bet to database
+				local betId = exports.oxmysql:insert_async('INSERT INTO bettingbets (keym, bet, odd, data) VALUES (?, ?, ?, ?) ', {
+					keym, bet, odd, json.encode(iBetting[keym])
+				})
+				-- send info notify
+				TriggerClientEvent('esx:showNotification', id, 'Beted successfully!', "info", 3000)
+			end
+		elseif Config.Framework == "QBCore" then
+			local xPlayer = QBCore.Functions.GetPlayer(id)
+			-- check player money
+			if xPlayer.Functions.GetMoney(Config.PaymentAccount) < bet then
+				-- send error notify
+				TriggerClientEvent('esx:showNotification', id, 'Do not have enough money to bet', "error", 3000)
+			else
+				-- set player money
+				xPlayer.Functions.RemoveMoney(Config.PaymentAccount, bet)
+				-- bet odd
+				local odd = 0
+				if bet == 0 then odd = iBetting[keym].odd0 elseif bet == 1 then odd = iBetting[keym].odd1 elseif bet == 2 then odd = iBetting[keym].odd2 end
+				-- insert bet to database
+				local betId = exports.oxmysql:insert_async('INSERT INTO bettingbets (keym, bet, odd, data) VALUES (?, ?, ?, ?) ', {
+					keym, bet, odd, json.encode(iBetting[keym])
+				})
+				-- send info notify
+				TriggerClientEvent('esx:showNotification', id, 'Beted successfully!', "info", 3000)
+			end
 		end
+
 	end
 end)
