@@ -101,6 +101,17 @@ AddEventHandler('iBetting:bet', function(data)
 				TriggerClientEvent('esx:showNotification', id, 'Beted successfully!', "info", 3000)
 			end
 		end
-
 	end
 end)
+
+function performAPIRequest(URL)
+	PerformHttpRequest(URL, function(error, result, headers)
+		return result
+	end,'GET')
+end
+
+function loadDataToInternal()
+	
+end
+
+loadDataToInternal()
