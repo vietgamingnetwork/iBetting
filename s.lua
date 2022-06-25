@@ -2,11 +2,15 @@
 -- variables
 -----------------------------------------------------------------------------------------------------------------
 local iBetting = {}
-local ESX = nil
+local ESX, QBCore
 -----------------------------------------------------------------------------------------------------------------
--- ESX
+-- ESX, QBCore
 -----------------------------------------------------------------------------------------------------------------
-TriggerEvent(Config.EsxSharedObject, function(obj) ESX = obj end)
+if Config.Framework == "ESX" then
+    TriggerEvent(Config.EsxSharedObject, function(obj) ESX = obj end)
+elseif Config.Framework == "QBCore" then
+    QBCore = exports['qb-core']:GetCoreObject()
+end
 -----------------------------------------------------------------------------------------------------------------
 -- load betting list data
 -----------------------------------------------------------------------------------------------------------------
