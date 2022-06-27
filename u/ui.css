@@ -15,11 +15,11 @@ html {font-size:0.85vw}
 
 /* betting */
 .betting .manager {width:65rem;}
-.betting .sports, .betting .odds {height:40rem;overflow-x:hidden;overflow-y:scroll;}
-.betting .sports::-webkit-scrollbar, .betting .odds::-webkit-scrollbar{width: 0.2rem;background:#000000;}
-.betting .sports::-webkit-scrollbar-thumb, .betting .odds::-webkit-scrollbar-thumb{width: 0.2rem;background:#ffcc66;}
+.betting .sports, .betting .odds, .betting .bets {height:40rem;overflow-x:hidden;overflow-y:scroll;}
+.betting .sports::-webkit-scrollbar, .betting .odds::-webkit-scrollbar, .betting .bets::-webkit-scrollbar{width: 0.1rem;background:#000000;}
+.betting .sports::-webkit-scrollbar-thumb, .betting .odds::-webkit-scrollbar-thumb, .betting .bets::-webkit-scrollbar-thumb{width: 0.1rem;background:#ffcc66;}
 
 /* playing */
-.betting .playing {width:50rem;}
+.betting .playing {width:65rem;}
 .betting .playing .match .img{width:4.5rem;}
 .betting .playing .match .btn{width:3.5rem;}

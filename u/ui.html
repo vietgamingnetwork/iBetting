@@ -11,7 +11,7 @@
 	<div class="position-absolute top-50 start-50 translate-middle betting">
 		<div class="toast bg-success text-light manager" data-bs-autohide="false">
 			<div class="toast-header bg-dark text-light">
-				<strong class="text-capitalize me-auto">Betting system</strong>
+				<strong class="text-capitalize me-auto">Sports betting system manager</strong>
 				<button type="button" class="btn-close close"></button>
 			</div>
 			<div class="toast-body">
@@ -28,34 +28,44 @@
 		
 		<div class="toast bg-success text-light playing" data-bs-autohide="false">
 			<div class="toast-header bg-dark text-light">
-				<strong class="text-capitalize me-auto">Betting system</strong>
+				<strong class="text-capitalize me-auto">Sports betting system playing</strong>
 				<button type="button" class="btn-close close"></button>
 			</div>
 			<div class="toast-body">
-
+				<div class="row">
+					<div class="col-8 sports">
+						
+					</div>
+					<div class="col-4 bets">
+						<div class="toast bg-success text-light mb-2 placeBet" data-bs-autohide="false">
+							<div class="toast-header bg-dark text-light">
+								<strong class="text-capitalize me-auto"></strong>
+								<button class="btn-close closeBet"></button>
+							</div>
+							<div class="toast-body">
+								<div class="row">
+									<div class="col-6 fw-bold away"></div><div class="col-6 fw-bold text-end home"></div>
+								</div>
+								<div class="border-top border-warning opacity-25 my-2"></div>
+								<span class="bet"></span> <span class="float-end odd"></span>
+								<div class="border-top border-warning opacity-25 my-2"></div>
+								<div class="row">
+									<div class="col-6 fw-bold">
+										<input class="form-control form-control-sm bg-secondary text-light text-end amount" type="number" placeholder="Bet amount">
+									</div>
+									<div class="col-6"><div class="btn btn-sm btn-warning text-light w-100 submit" type="button" data-bs-dismiss="toast">Place BET!</div></div>
+								</div>
+							</div>
+						</div>
+						<div class="list">
+							
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		
-		<div class="toast bg-success text-light placeBet" data-bs-autohide="false">
-			<div class="toast-header bg-dark text-light">
-				<strong class="text-capitalize me-auto"></strong>
-				<button type="button" class="btn-close close" data-bs-dismiss="toast"></button>
-			</div>
-			<div class="toast-body">
-				<div class="row">
-					<div class="col-6 fw-bold away"></div><div class="col-6 fw-bold text-end home"></div>
-				</div>
-				<div class="border-top border-warning opacity-25 my-2"></div>
-				BET: <span class="bet"></span> <span class="float-end odd"></span>
-				<div class="border-top border-warning opacity-25 my-2"></div>
-				<div class="row">
-					<div class="col-6 fw-bold">
-						<input class="form-control form-control-sm bg-secondary text-light text-end amount" type="number" placeholder="Bet amount">
-					</div>
-					<div class="col-6"><div class="btn btn-sm btn-warning text-light w-100 submit" type="button" data-bs-dismiss="toast">Place BET!</div></div>
-				</div>
-			</div>
-		</div>
+		
 	</div>
 	<!-- betting: end -->
 
