@@ -210,7 +210,7 @@ $(document).on('click','.manager .sports .sport', function() {
 							</div>
 							<div class="col-2">
 								<div class="btn btn-sm btn-success w-100 list"
-									data-keym="${value.id}" data-time="${value.commence_time}"
+									data-keym="${value.id}" data-time="${value.commence_time}" data-sport="${value.sport_key}" 
 									data-cham="${value.sport_title}" data-away="${value.away_team}" data-home="${value.home_team}"
 									data-odd0="${value.bookmakers[0].markets[0].outcomes[0].price}" data-odd1="${value.bookmakers[0].markets[0].outcomes[1].price}" data-odd2="${value.bookmakers[0].markets[0].outcomes[2].price}"
 								>LIST IT!</div>
@@ -229,6 +229,13 @@ $(document).on('click','.manager .sports .sport', function() {
 				</div>
 			</div>
 			`);
+			if(typeof(manager[value.id]) != 'undefined')
+			{
+				$('.manager .odds .m' + value.id + ' .list').html('UPDATE!');
+				$('.manager .odds .m' + value.id + ' .list').removeClass('btn-success').addClass('btn-warning');
+				$('.manager .odds .m' + value.id + ' .awayIcon').val(manager[value.id].awayIcon);
+				$('.manager .odds .m' + value.id + ' .homeIcon').val(manager[value.id].homeIcon);
+			}
 		});
 	});	
 });	

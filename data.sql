@@ -28,7 +28,8 @@ CREATE TABLE `bettingbets` (
   `bet` int(1) NOT NULL,
   `odd` double NOT NULL,
   `amount` int(11) NOT NULL,
-  `data` longtext NOT NULL
+  `data` longtext NOT NULL,
+  `completed` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -39,6 +40,7 @@ CREATE TABLE `bettingbets` (
 
 CREATE TABLE `bettinglist` (
   `keym` varchar(255) NOT NULL,
+  `sport` varchar(255) NOT NULL,
   `cham` varchar(255) NOT NULL,
   `away` varchar(255) NOT NULL,
   `home` varchar(255) NOT NULL,
@@ -50,17 +52,6 @@ CREATE TABLE `bettinglist` (
   `time` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `bettinglist`
---
-
-INSERT INTO `bettinglist` (`keym`, `cham`, `away`, `home`, `awayIcon`, `homeIcon`, `odd0`, `odd1`, `odd2`, `time`) VALUES
-('9533c6e55d496c6dad743ccc0b501c1a', 'FIFA World Cup', 'Netherlands', 'Senegal', 'https://dlskitshub.com/wp-content/uploads/2020/05/DLS-Liverpool-Logo-300x300.png', 'https://dlskitshub.com/wp-content/uploads/2020/05/DLS-Liverpool-Logo-300x300.png', 1.75, 5.6, 3.64, 1669035600),
-('99ff37c07e84df5d07c6db3c36e29fc0', 'FIFA World Cup', 'Ecuador', 'Qatar', 'https://dlskitshub.com/wp-content/uploads/2020/05/DLS-Liverpool-Logo-300x300.png', 'https://dlskitshub.com/wp-content/uploads/2020/05/DLS-Liverpool-Logo-300x300.png', 2.22, 3.62, 3.36, 1669046400);
-
---
--- Indexes for dumped tables
---
 
 --
 -- Indexes for table `bettingbets`
