@@ -126,7 +126,7 @@ Citizen.CreateThread(function()
 		exports.oxmysql:query('SELECT sport FROM `bettinglist` GROUP BY sport', {}, function(sports)
 			if sports then
 				for _, sport in pairs(sports) do
-					PerformHttpRequest('https://api.the-odds-api.com/v4/sports/' .. sport .. '/scores/?apiKey=' .. apiKey .. '&daysFrom=3&dateFormat=unix', function (errorCode, resultData, resultHeaders)
+					PerformHttpRequest('https://api.the-odds-api.com/v4/sports/' .. sport.sport .. '/scores/?apiKey=' .. apiKey .. '&daysFrom=3&dateFormat=unix', function (errorCode, resultData, resultHeaders)
 						for _, result in pairs(json.decode(resultData)) do
 							if result.completed == true then
 								local homeScore = result.scores[1].score
