@@ -74,7 +74,7 @@ AddEventHandler('iBetting:list', function(data)
 		-- create new match listing
 		if not iBetting[data.keym] then
 			exports.oxmysql:insert_async('INSERT INTO bettinglist (keym, sport, cham, away, home, awayIcon, homeIcon, odd0, odd1, odd2, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ', {
-				data.keym, data,sport, data.cham, data.away, data.home, data.awayIcon, data.homeIcon, data.odd0, data.odd1, data.odd2, data.time
+				data.keym, data.sport, data.cham, data.away, data.home, data.awayIcon, data.homeIcon, data.odd0, data.odd1, data.odd2, data.time
 			})
 			TriggerClientEvent('esx:showNotification', id, 'The match listed and bet ready', "success", 5000)
 		-- update old match listing

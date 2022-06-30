@@ -243,23 +243,23 @@ $(document).on('click','.manager .sports .sport', function() {
 // list
 // --------------------------------------------------------------------------------------------------------------------------
 $(document).on('click','.manager .list', function() {
-	var keym = $(this).data('keym');
+	var keym = $(this).data('keym'); var sport = $(this).data('sport');
 	var time = $(this).data('time'); var cham = $(this).data('cham');
 	var away = $(this).data('away'); var home = $(this).data('home');
 	var odd0 = $(this).data('odd0'); var odd1 = $(this).data('odd1'); var odd2 = $(this).data('odd2');
 	var awayIcon = $('.m' + keym + ' .awayIcon').val(); var homeIcon = $('.m' + keym + ' .homeIcon').val();
-	callClient({'event':'iBetting:list', 'keym':keym, 'cham':cham, 'time':time, 'away':away, 'home':home, 'odd0':odd0, 'odd1':odd1, 'odd2':odd2, 'awayIcon':awayIcon, 'homeIcon':homeIcon});
+	callClient({'event':'iBetting:list', 'keym':keym, 'sport':sport, 'cham':cham, 'time':time, 'away':away, 'home':home, 'odd0':odd0, 'odd1':odd1, 'odd2':odd2, 'awayIcon':awayIcon, 'homeIcon':homeIcon});
 });	
 // --------------------------------------------------------------------------------------------------------------------------
 // update
 // --------------------------------------------------------------------------------------------------------------------------
 $(document).on('click','.manager .update', function() {
-	var keym = $(this).data('keym');
+	var keym = $(this).data('keym'); var sport = $(this).data('sport');
 	var time = $(this).data('time'); var cham = $(this).data('cham');
 	var away = $(this).data('away'); var home = $(this).data('home');
 	var odd0 = $(this).data('odd0'); var odd1 = $(this).data('odd1'); var odd2 = $(this).data('odd2');
 	var awayIcon = $('.m' + keym + ' .awayIcon').val(); var homeIcon = $('.m' + keym + ' .homeIcon').val();
-	callClient({'event':'iBetting:update', 'keym':keym, 'cham':cham, 'time':time, 'away':away, 'home':home, 'odd0':odd0, 'odd1':odd1, 'odd2':odd2, 'awayIcon':awayIcon, 'homeIcon':homeIcon});
+	callClient({'event':'iBetting:update', 'keym':keym, 'sport':sport, 'cham':cham, 'time':time, 'away':away, 'home':home, 'odd0':odd0, 'odd1':odd1, 'odd2':odd2, 'awayIcon':awayIcon, 'homeIcon':homeIcon});
 });	
 // --------------------------------------------------------------------------------------------------------------------------
 // bet
