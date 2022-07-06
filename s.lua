@@ -27,7 +27,7 @@ end
 function addMoney(src, amount)
     if configs.framework == 'esx' then
         local xPlayer = framework.GetPlayerFromId(src)
-		xPlayer.addAccountMoney('bank', amount)
+	xPlayer.addAccountMoney('bank', amount)
     elseif configs.framework == 'qbcore' then
         local Player = framework.Functions.GetPlayer(src)
         Player.Functions.AddMoney('bank', amount, 'iBetting Balance Withdraw')
