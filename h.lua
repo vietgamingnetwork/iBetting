@@ -4,3 +4,4 @@
 configs = {}
 configs.managerCMD = 'betmanager'
 configs.playingCMD = 'betplaying'
+configs.framework = 'qbcore' -- esx or qbcore
